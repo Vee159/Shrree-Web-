@@ -1,0 +1,632 @@
+  <!DOCTYPE html>
+
+
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shree Enterprises – Leading Garment Dealers</title>
+    <meta name="color-scheme" content="light" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+    <style>
+     
+      body, html {
+        margin: 0; padding: 0;
+        font-family: 'Poppins', sans-serif;
+        scroll-behavior: smooth;
+        background-color: #fff;
+        color: #333;
+        min-height: 100vh;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 30px;
+        background: #2c3e50;
+        color: #fff;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      }
+
+      nav .logo {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        font-size: 1.8rem;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav ul li {
+        font-weight: 500;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: color 0.3s ease;
+      }
+
+      nav ul li:hover {
+        color: #3498db;
+      }
+
+      
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+      }
+
+      .hamburger div {
+        width: 25px;
+        height: 3px;
+        background: white;
+        border-radius: 2px;
+      }
+
+      
+      @media (max-width: 768px) {
+        nav ul {
+          display: none;
+          flex-direction: column;
+          background: #2c3e50;
+          position: absolute;
+          top: 60px;
+          right: 30px;
+          padding: 20px;
+          border-radius: 8px;
+          width: 180px;
+        }
+
+        nav ul.show {
+          display: flex;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+      }
+
+      
+      .hero {
+        background-color: #fdfdfd;
+        padding: 100px 20px;
+        height: auto;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+        color: #2c3e50;
+        margin-bottom: 20px;
+        font-family: 'Playfair Display', serif;
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+        color: #555;
+        margin-bottom: 30px;
+      }
+
+      .hero button.cta {
+        background-color: #3498db;
+        color: white;
+        border: none;
+        padding: 15px 30px;
+        font-size: 1.25rem;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        box-shadow: 0 5px 15px rgba(52,152,219,0.4);
+      }
+
+      .hero button.cta:hover,
+      .hero button.cta:focus {
+        background-color: #2980b9;
+        outline: none;
+        box-shadow: 0 5px 20px rgba(41,128,185,0.6);
+      }
+
+      
+      section {
+        max-width: 1200px;
+        margin: 40px auto;
+        padding: 0 20px;
+      }
+
+      h2 {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        color: #34495e;
+        font-weight: 700;
+        text-align: center;
+      }
+
+      p {
+        font-size: 1.2rem;
+        line-height: 1.6;
+        color: #7f8c8d;
+        max-width: 800px;
+        margin: 0 auto 40px auto;
+        text-align: center;
+      }
+
+      
+      .team-members {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+      }
+
+      .team-member {
+        max-width: 250px;
+        background: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        transition: box-shadow 0.3s ease;
+      }
+
+      .team-member:hover {
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      }
+
+      .team-member h3 {
+        margin-bottom: 10px;
+        color: #2c3e50;
+        font-family: 'Playfair Display', serif;
+      }
+
+      .team-member p {
+        color: #555;
+        font-weight: 500;
+      }
+
+      
+      .brand-logos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+        margin-top: 30px;
+      }
+
+      .brands img {
+        width: 160px;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        filter: grayscale(0);
+      }
+
+      .brands img:hover,
+      .brands img:focus {
+        transform: scale(1.1);
+        filter: grayscale(0);
+        outline: none;
+        box-shadow: 0 0 10px #3498db;
+      }
+
+      /* Portfolio Section */
+      .portfolio .swiper-container {
+        width: 100%;
+        height: 500px;
+      }
+
+      .swiper-slide {
+        background-color: #eaeaea;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .swiper-slide:hover {
+        transform: scale(1.05);
+      }
+
+      .portfolio img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        object-fit: cover;
+        loading: lazy;
+      }
+
+      /* Contact Form */
+      form {
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: left;
+      }
+
+      form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        color: #2c3e50;
+        font-size: 1rem;
+      }
+
+      form input, form textarea {
+        padding: 15px;
+        margin-bottom: 20px;
+        width: 100%;
+        border-radius: 10px;
+        border: 2px solid #ccc;
+        font-size: 16px;
+        transition: border-color 0.3s ease;
+      }
+
+      form input:focus, form textarea:focus {
+        border-color: #3498db;
+        outline: none;
+        box-shadow: 0 0 5px #3498db;
+      }
+
+      form button {
+        padding: 15px;
+        background: #3498db;
+        color: white;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+        width: 100%;
+      }
+
+      form button:hover,
+      form button:focus {
+        background: #2980b9;
+        outline: none;
+      }
+
+      
+      #form-success {
+        display: none;
+        text-align: center;
+        margin-top: 15px;
+        color: green;
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      
+      .testimonials {
+        max-width: 900px;
+        margin: 0 auto;
+        margin-top: 60px;
+        padding: 0 20px;
+      }
+
+      .testimonial {
+        background: #f9f9f9;
+        padding: 25px 30px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+        font-style: italic;
+        color: #555;
+        position: relative;
+      }
+
+      .testimonial::before {
+        content: "“";
+        font-size: 3rem;
+        color: #3498db;
+        position: absolute;
+        top: 10px;
+        left: 20px;
+      }
+
+      .testimonial cite {
+        display: block;
+        margin-top: 15px;
+        font-weight: 700;
+        color: #2c3e50;
+        text-align: right;
+      }
+
+      
+      footer {
+        background-color: #2c3e50;
+        color: #fff;
+        padding: 25px 20px;
+        text-align: center;
+        font-size: 0.9rem;
+        position: relative;
+        margin-top: 80px;
+      }
+
+      footer .security-badges {
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      footer .security-badges img {
+        width: 50px;
+        filter: brightness(0) invert(1);
+      }
+
+      
+      @media (max-width: 768px) {
+        .team-members {
+          flex-direction: column;
+          align-items: center;
+        }
+        .portfolio .swiper-container {
+          height: 300px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    
+    <nav role="navigation" aria-label="Main Navigation">
+      <div class="logo" tabindex="0">Shree Enterprises</div>
+      <div class="hamburger" aria-label="Menu" aria-expanded="false" role="button" tabindex="0">
+        <div></div><div></div><div></div>
+      </div>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#team">Our Team</a></li>
+        <li><a href="#brands">Brands</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    
+    <section class="hero" role="banner">
+      <h1>Shree Enterprises</h1>
+      <p>Leading Garment Dealers with Global Brands</p>
+      <button class="cta" aria-label="Contact Us Button">Contact Us</button>
+    </section>
+
+    
+    <section id="about" data-aos="fade-up" data-aos-duration="1500" tabindex="0">
+      <h2>About Us</h2>
+      <p>Shree Enterprises is a trusted name in the garment industry, dealing with world-renowned brands like US Polo, Arrow, Indian Terrain, and more. We specialize in quality and style to deliver the best to our clients.</p>
+    </section>
+
+    
+    <section id="team" data-aos="fade-up" data-aos-duration="1500" tabindex="0">
+      <h2>Our Team</h2>
+      <p>Meet the dedicated individuals behind Shree Enterprises:</p>
+      <div class="team-members">
+        <div class="team-member" tabindex="0">
+          <h3>Mishil Shah</h3>
+          <p>Founder & CEO</p>
+        </div>
+        <div class="team-member" tabindex="0">
+          <h3>Girish Shah</h3>
+          <p>Co-Founder & Managing Director</p>
+        </div>
+        <div class="team-member" tabindex="0">
+          <h3>Nupresh Mehta</h3>
+          <p>Director of Operations</p>
+        </div>
+      </div>
+    </section>
+
+    
+  <section id="brands" class="brands" data-aos="fade-up" data-aos-duration="1500" tabindex="0">
+    <h2>Brands We Deal With</h2>
+    <div class="brand-logos" role="list">
+
+      
+      <div role="listitem" tabindex="0" style="text-align: center; position: relative;">
+        <div class="brand-info">
+          <img src="brands/Arrow.avif" alt="Arrow Logo" />
+          <div class="brand-description">
+            <h3>Arrow</h3>
+            <p>Arrow offers timeless style, superior quality, and comfort in menswear. From classic dress shirts to casual wear, Arrow ensures you make a lasting impression.</p>
+          </div>
+        </div>
+      </div>
+
+      
+      <div role="listitem" tabindex="0" style="text-align: center; position: relative;">
+        <div class="brand-info">
+          <img src="brands/IT.png" alt="Indian Terrain Logo" />
+          <div class="brand-description">
+            <h3>Indian Terrain</h3>
+            <p>Indian Terrain is known for its premium, modern casuals that combine the finest fabrics with innovative designs. Perfect for the modern man.</p>
+          </div>
+        </div>
+      </div>
+
+      
+      <div role="listitem" tabindex="0" style="text-align: center; position: relative;">
+        <div class="brand-info">
+          <img src="brands/Us Polo.jpg" alt="US Polo Logo" />
+          <div class="brand-description">
+            <h3>US Polo</h3>
+            <p>US Polo represents a dynamic blend of luxury, sport, and fashion. Known for its elegant yet casual styles, it's the go-to brand for confident individuals.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  
+<section id="products" data-aos="fade-up" data-aos-duration="1500" tabindex="0">
+  <h2>Our Garment Offerings</h2>
+  <p>We deal in premium men's, women's, and kidswear including shirts, trousers, t-shirts, jackets, uniforms, and more.</p>
+  <div class="team-members">
+    <div class="team-member">
+      <h3>Men's Apparel</h3>
+      <p>Shirts, Trousers, Polos</p>
+    </div>
+    <div class="team-member">
+      <h3>Women's Wear</h3>
+      <p>Casuals, Ethnic, Western</p>
+    </div>
+    <div class="team-member">
+      <h3>Uniforms & Corporate</h3>
+      <p>Custom stitched, bulk supply</p>
+    </div>
+  </div>
+</section>
+
+
+<section id="process" data-aos="fade-up" data-aos-duration="1500" tabindex="0">
+  <h2>How We Work</h2>
+  <p>From first contact to delivery – we make the garment sourcing process simple and efficient.</p>
+  <div class="team-members">
+    <div class="team-member">
+      <h3>1. Enquiry</h3>
+      <p>Contact us with your product needs.</p>
+    </div>
+    <div class="team-member">
+      <h3>2. Sampling</h3>
+      <p>We prepare samples as per your specifications.</p>
+    </div>
+    <div class="team-member">
+      <h3>3. Production & Delivery</h3>
+      <p>Timely manufacturing and logistics handled professionally.</p>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio" class="portfolio" data-aos="fade-up" data-aos-duration="1500" tabindex="0">
+  <h2>Our Portfolio</h2>
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="portfolio/item1.jpg" alt="Formal Shirts Collection" /></div>
+      <div class="swiper-slide"><img src="portfolio/item2.jpg" alt="Corporate Uniform Designs" /></div>
+      <div class="swiper-slide"><img src="portfolio/item3.jpg" alt="Casual Wear Line" /></div>
+      
+      
+      <div class="swiper-slide">
+        <img src="portfolio/garment-display.jpg" alt="Garment Showcase - Men's & Women's Apparel" />
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</section>
+
+
+ 
+    <section class="testimonials" aria-label="Customer Testimonials" tabindex="0" data-aos="fade-up" data-aos-duration="1500">
+      <h2>What Our Clients Say</h2>
+      <div class="testimonial">
+        "Excellent quality and timely delivery! Shree Enterprises is my go-to garment supplier."
+        <cite>- Rajesh Kumar</cite>
+      </div>
+      <div class="testimonial">
+        "Great service and authentic branded products. Highly recommend Shree Enterprises."
+        <cite>- Anjali Mehta</cite>
+      </div>
+    </section>
+
+    
+    <section id="contact" class="contact" data-aos="fade-up" data-aos-duration="1500" tabindex="0">
+      <h2>Contact Us</h2>
+      <form id="contact-form" action="https://formspree.io/f/your-id" method="POST" aria-label="Contact form">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required aria-required="true" autocomplete="name" />
+        
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="Email Address" required aria-required="true" autocomplete="email" />
+        
+        <label for="message">What can we help you with?</label>
+        <textarea id="message" name="message" placeholder="Write your message here..." required aria-required="true" rows="5"></textarea>
+        
+        <button type="submit">Send Message</button>
+        <div id="form-success" role="alert" aria-live="polite">Thank you for contacting us. We will get back to you soon.</div>
+      </form>
+    </section>
+
+    
+    <footer role="contentinfo">
+      <p>© 2025 Shree Enterprises | All Rights Reserved</p>
+      <div class="security-badges" aria-label="Security Badges">
+        <img src="https://via.placeholder.com/50?text=SSL" alt="SSL Secure" />
+        <img src="https://via.placeholder.com/50?text=Trusted" alt="Trusted Site" />
+        <img src="https://via.placeholder.com/50?text=Privacy" alt="Privacy Protected" />
+      </div>
+      <p><a href="#" style="color:#ddd;">Privacy Policy</a></p>
+    </footer>
+
+    
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+      
+      const hamburger = document.querySelector('.hamburger');
+      const navUl = document.querySelector('nav ul');
+
+      hamburger.addEventListener('click', () => {
+        const expanded = hamburger.getAttribute('aria-expanded') === 'true' || false;
+        hamburger.setAttribute('aria-expanded', !expanded);
+        navUl.classList.toggle('show');
+      });
+
+      hamburger.addEventListener('keydown', (e) => {
+        if(e.key === "Enter" || e.key === " "){
+          e.preventDefault();
+          hamburger.click();
+        }
+      });
+
+      document.querySelector('.hero .cta').addEventListener('click', () => {
+        document.querySelector('#contact').scrollIntoView({behavior: 'smooth'});
+      });
+
+      const swiper = new Swiper('.swiper-container', {
+        loop: true,
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true,
+        },
+        lazy: true,
+      });
+
+      AOS.init();
+
+      const form = document.getElementById('contact-form');
+      const successMessage = document.getElementById('form-success');
+
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+      
+        successMessage.style.display = 'block';
+        form.reset();
+
+        setTimeout(() => {
+          successMessage.style.display = 'none';
+        }, 6000);
+      });
+    </script>
+  </body>
+  </html>   
